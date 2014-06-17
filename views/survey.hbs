@@ -1,0 +1,21 @@
+<!DOCTYPE html ->
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Tu veux ou tu veux pas</h2>
+        <h1>{{survey}}</h1>
+        <ul>
+            {{#answers}}
+            <li>{{name}} veut{{^answer}} pas{{/answer}}</li>
+            {{/answers}}
+        </ul>
+        <form method="POST" action="/answer">
+            <input type="hidden" name="key" value="{{key}}" />
+            <input name="name" />
+            <input type="radio" name="answer" value="yes" />Je veux
+            <input type="radio" name="answer" value="no" />Je veux pas
+            <input type="submit" />
+        </form>
+    </body>
+</html>

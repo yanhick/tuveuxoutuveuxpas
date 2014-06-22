@@ -19,6 +19,10 @@
     "stache": "^0.1.0"
   },
   "devDependencies": {
-    "mocha": "^1.20.1"
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1",
+    "should": "^4.0.4",
+    "sinon": "^1.10.2",
+    "sinon-chai": "^2.5.0"
   }
 }

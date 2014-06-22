@@ -54,17 +54,10 @@ server.post('/answer', function (req, res) {
     var surveys = db.get('surveys');
     var answer = req.body.answer === 'yes';
 
-    //find survey
-    surveys.find({key: req.body.key}, {}, function (err, docs) {
-        if (err) return res.send('Could not read from db');
+    survey.addAnswer(key, {name: req.body.name, answer: answer}, function (err, survey) {
+        if (err) return res.send(err);
 
-        //add an answer
-        surveys.update(docs[0]._id, {$push: {answers: {name: req.body.name, answer: answer}}
-        },
-        function (err, doc) {
-            if (err) return res.send('Could not update doc');
-            res.redirect('/' + key);
-        });
+        res.redirect('/' + key);
     });
 });
 

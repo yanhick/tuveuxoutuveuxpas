@@ -1,12 +1,19 @@
 <!DOCTYPE html ->
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+
     </head>
     <body>
-        <form method="POST" action="/survey">
+        <form class="jumbotron container" method="POST" action="/survey">
             <h1>Tu veux ou tu veux pas</h1>
-            <input name="survey" required/>
-            <input type="submit" value="vas-y" />
+            <input class="form-control" name="survey" required/>
+            <input class="btn btn-primary btn-lg" type="submit" value="vas-y" />
         </form>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     </body>
 </html>

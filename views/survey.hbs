@@ -5,11 +5,14 @@
     <body>
         <h2>Tu veux ou tu veux pas</h2>
         <h1>{{survey}}</h1>
-        <ul>
+        <ul class="answers">
             {{#answers}}
-            <li>{{name}} veut{{^answer}} pas{{/answer}}</li>
+            <li {{^answer}}class="no"{{/answer}}>{{name}} veut{{^answer}} pas{{/answer}}</li>
             {{/answers}}
         </ul>
+        {{#poll.refused}}<h3 class="no">On veut pas</h3>{{/poll.refused}}
+        {{#poll.equals}}<h3 class="equal">On sait pas</h3>{{/poll.equals}}
+        {{#poll.accepted}}<h3 class="yes">On veut</h3>{{/poll.accepted}}
         <form method="POST" action="/answer">
             <input type="hidden" name="key" value="{{key}}" />
             <input name="name" />

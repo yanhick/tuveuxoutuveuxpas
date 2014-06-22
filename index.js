@@ -7,7 +7,8 @@ var expressHbs = require('express3-handlebars');
 //set up mongo connection
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/tuveux');
+var mongoUri = process.env.MONGOLAB_URI || 'localhost:27017/tuveux';
+var db = monk(mongoUri);
 
 var getResults = require('./lib/results');
 var survey = require('./lib/survey')(db);

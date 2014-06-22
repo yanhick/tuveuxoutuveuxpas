@@ -10,6 +10,8 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/tuveux');
 
+var getResults = require('./lib/results');
+
 var server = express();
 
 //set up handlebar templating
@@ -33,27 +35,11 @@ server.get('/:key', function (req, res) {
         //redirect to index if key doesn't exist
         if(docs.length === 0 ) return res.redirect('/');
 
-        docs[0].poll = getPollResults(docs[0].answers);
+        docs[0].poll = getResults(docs[0].answers);
 
         res.render('survey.hbs', docs[0]);
     });
 });
-
-/**
- * Return poll results basd on users answers
- */
-function getPollResults(answers) {
-    //poll result. +1 for yes -1 for no
-    var result = answers.reduce(function (acc, userAnswer) {
-        return userAnswer.answer === true ? acc++ : acc--;
-    }, 0);
-
-    return {
-        accepted: result > 0,
-        refused: result < 0,
-        equals: result === 0
-    }
-}
 
 //create a new survey
 server.post('/survey', function (req, res) {

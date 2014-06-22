@@ -15,10 +15,10 @@
         {{#poll.accepted}}<h3 class="yes">On veut</h3>{{/poll.accepted}}
         <form method="POST" action="/answer">
             <input type="hidden" name="key" value="{{key}}" />
-            <input name="name" />
-            <input type="radio" name="answer" value="yes" />Je veux
-            <input type="radio" name="answer" value="no" />Je veux pas
-            <input type="submit" />
+            <input name="name" placeholder="nom" required />
+            <input type="radio" name="answer" value="yes" required/>je veux
+            <input type="radio" name="answer" value="no" required/>je veux pas
+            <input type="submit" value="vas-y" />
         </form>
     </body>
 </html>

@@ -23,14 +23,14 @@ server.use(express.static(__dirname + '/public'));
 //parse POST request
 server.use(bodyParser.urlencoded());
 
-//return survey at the provided ID
-server.get('/:id', function (req, res) {
+//return survey at the provided key
+server.get('/:key', function (req, res) {
 
     var surveys = db.get('surveys');
-    surveys.find({key: req.params.id}, {}, function (err, docs) {
+    surveys.find({key: req.params.key}, {}, function (err, docs) {
         if (err) return res.send('Could not read from db');
 
-        //redirect to index if id don't exist
+        //redirect to index if key doesn't exist
         if(docs.length === 0 ) return res.redirect('/');
 
         res.render('survey.hbs', docs[0]);
@@ -51,7 +51,7 @@ server.post('/survey', function (req, res) {
     },
     function (err, doc) {
         if (err) return res.send('There was a problem writing to the database');
-        res.redirect('/' + id);
+        res.redirect('/' + key);
     });
 });
 
